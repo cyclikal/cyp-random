@@ -2,13 +2,14 @@ import setuptools
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
+shrt = "Example Cyckei Plugin Package, Generates Random Numbers"
 
 setuptools.setup(
     name="cyp-random",
     version="0.1.dev1",
     author="Gabriel Ewig",
     author_email="gabriel@cyclikal.com",
-    description="Example Cyckei Plugin Package, Generates Random Numbers",
+    description=shrt,
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/cyclikal/cyp-random",
