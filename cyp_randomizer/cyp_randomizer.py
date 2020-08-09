@@ -6,8 +6,8 @@ import os.path
 logger = logging.getLogger("cyckei")
 
 
-class RandomController(cyp_base.PluginController):
-    def __init__(self):
+class PluginController(cyp_base.BaseController):
+    def __init__(self, sources):
         base_path = os.path.join(os.path.dirname(__file__), "..")
         super().__init__("randomizer", base_path)
 
@@ -23,13 +23,13 @@ class RandomController(cyp_base.PluginController):
         # Sources don't need to be found for this plugin,
         # so we just initialize two randomizers as examples
         sources = {}
-        sources["Rand1"] = Randomizer(10)
-        sources["Rand2"] = Randomizer(20)
+        sources["Rand1"] = PluginSource(10)
+        sources["Rand2"] = PluginSource(20)
 
         return sources
 
 
-class Randomizer(cyp_base.SourceObject):
+class PluginSource(cyp_base.BaseSource):
     def __init__(self, port):
         super().__init__()
         self.range = [0, port]
@@ -40,5 +40,5 @@ class Randomizer(cyp_base.SourceObject):
 
 
 if __name__ == "__main__":
-    controller = RandomController()
+    controller = PluginController()
     print(cyp_base.read_all(controller))
