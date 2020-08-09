@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 shrt = "Example Cyckei Plugin Package, Generates Random Numbers"
 
 setuptools.setup(
-    name="cyp-random",
+    name="cyp-randomizer",
     version="0.1.dev1",
     author="Gabriel Ewig",
     author_email="gabriel@cyclikal.com",
