@@ -1,17 +1,24 @@
-import logging
 from random import randint
 from cyckei.plugins import cyp_base
-import os.path
-
-logger = logging.getLogger("cyckei")
 
 
 class PluginController(cyp_base.BaseController):
     def __init__(self, sources):
-        base_path = os.path.join(os.path.dirname(__file__), "..")
-        super().__init__("randomizer", base_path)
+        super().__init__(
+            "randomizer",
+            "Generates random values, as an example."
+        )
 
-    def get_sources(self):
+        # Create a randomizer object
+        self.sources = self.load_sources(sources)
+        self.logger.info(f"Created {len(self.sources)} Randomizer(s)")
+
+        # List of names to declare to Cyckei
+        self.names = []
+        for source in self.sources:
+            self.names.append(str(source))
+
+    def get_sources(self, config_sources):
         """
         Searches for available sources, and establishes source objects.
 
@@ -23,17 +30,18 @@ class PluginController(cyp_base.BaseController):
         # Sources don't need to be found for this plugin,
         # so we just initialize two randomizers as examples
         sources = {}
-        sources["Rand1"] = PluginSource(10)
-        sources["Rand2"] = PluginSource(20)
+        for source in config_sources:
+            object = PluginSource(config_sources["meta"])
+            sources[object.name] = object
 
         return sources
 
 
 class PluginSource(cyp_base.BaseSource):
-    def __init__(self, port):
+    def __init__(self, range):
         super().__init__()
-        self.range = [0, port]
-        self.name = f"Random 0-{port}"
+        self.range = range
+        self.name = f"Random {range[0]}-{range[1]}"
 
     def read(self):
         return randint(self.range[0], self.range[1])
