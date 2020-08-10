@@ -18,7 +18,7 @@ class PluginController(cyp_base.BaseController):
         for source in self.sources:
             self.names.append(str(source))
 
-    def get_sources(self, config_sources):
+    def load_sources(self, config_sources):
         """
         Searches for available sources, and establishes source objects.
 
@@ -31,7 +31,7 @@ class PluginController(cyp_base.BaseController):
         # so we just initialize two randomizers as examples
         sources = {}
         for source in config_sources:
-            object = PluginSource(config_sources["meta"])
+            object = PluginSource(source["meta"])
             sources[object.name] = object
 
         return sources
