@@ -1,5 +1,25 @@
 from random import randint
 from cyckei.plugins import cyp_base
+import json
+
+default_config = json.loads(
+    """
+    {
+        "name": "randomizer",
+        "enabled": true,
+        "sources": [
+            {
+              "port": null,
+              "meta": [1, 10]
+            },
+            {
+              "port": null,
+              "meta": [11, 20]
+            }
+        ]
+    }
+    """
+)
 
 
 class PluginController(cyp_base.BaseController):
@@ -48,5 +68,6 @@ class PluginSource(cyp_base.BaseSource):
 
 
 if __name__ == "__main__":
-    controller = PluginController()
+    sources = default_config["sources"]
+    controller = PluginController(sources)
     print(cyp_base.read_all(controller))
