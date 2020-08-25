@@ -8,6 +8,7 @@ Intended to work with [Cyckei](https://github.com/cyclikal/cyckei), the Keithley
 ## About the Randomizer Plugin
 The randomizer plugin generates random numbers within a certain adjustable range.
 It is intended as a starting point for more complex Cyckei plugins and to facilitate testing.
+Compatible with all systems, no additional requirements.
 
 ## About Cyckei Plugins
 The Cyckei plugin infrastructure was developed to allow data from other instruments to be accessible to Cyckei. The system uses a two-part structure: a loading system and set of parent classes within Cyckei, and additional packages that meet certain standards to provide accurate data to Cyckei. When properly set up, the ability to select certain plugins will appear in the Cyckei client, and data will be meshed into Cyckei's usual output files.
@@ -18,6 +19,7 @@ See below for installation details for this specific plugin, and details about C
 
 #### Requirements
 Randomizer doesn't require any additional packages or drivers to run.
+
 It is recommended that the plugin, as well as Cyckei, are installed in a python [virtual environment](https://docs.python.org/3/tutorial/venv.html). To be accessed, the plugin must be in the same environment as Cyckei.
 
 #### Package Install
