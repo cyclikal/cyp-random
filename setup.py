@@ -6,7 +6,7 @@ shrt = "Example Cyckei Plugin Package, Generates Random Numbers"
 
 setuptools.setup(
     name="cyp-randomizer",
-    version="0.1.dev1",
+    version="1.0rc1",
     author="Gabriel Ewig",
     author_email="gabriel@cyclikal.com",
     description=shrt,
